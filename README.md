@@ -17,11 +17,12 @@ O programa conta com um menu interativo que permite realizar as seguintes opera�
 - **Alocação Dinâmica de Memória:** `malloc` e `free`
 - **Estruturas de Dados:** Listas Encadeadas (`struct`)
 
-##Como executar o programa:
-   - No Windows (Prompt/PowerShell):
+## Como executar o programa:
+   - Na pasta desse programa, abra o terminal e execute:
      ```cmd
      gcc ListaCompras.c -o ListaCompras.exe
      ```
+     Depois:
      ```cmd
      .\ListaCompras.exe
      ```
