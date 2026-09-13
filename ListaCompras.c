@@ -32,6 +32,7 @@ int Remover_produto(Lista **prim, Lista **ult);
 int Marcar_produto(Lista **prim);
 int Total_produtos(Lista *prim);
 int Exibir_lista(Lista *prim);
+int Desmarcar_produto(Lista **prim);
 
 //----------------Programa Principal------------------
 int main(){
@@ -62,11 +63,16 @@ int main(){
                 retorno = Marcar_produto(&ListaCompras->prim);
             }break;
             case 5:{
+                retorno = Desmarcar_produto(&ListaCompras->prim);
+            }break;
+            case 6:{
                 retorno = Total_produtos(ListaCompras->prim);
                 printf("Total de produtos: %d\n", retorno);
             }break;
         }
     }
+
+    printf("Sistema encerrado.");
 }
 
 //---------------------Funções------------------------
@@ -80,6 +86,39 @@ int Total_produtos(Lista *prim){
     }
 
     return qtd;
+}
+
+int Desmarcar_produto(Lista **prim){
+    if(prim == NULL){
+        printf("A lista esta vazia.");
+        return false;
+    }
+
+    Lista *aux;
+    int index = 1;
+    char nome[20];
+
+    printf("Informe o produto: ");
+    scanf("%s", nome);
+    nome[0] = toupper(nome[0]);
+
+    aux = *prim;
+    while(aux != NULL && strcmp(aux->info.nome, nome)){
+        index++;
+        aux = aux->prox_prod;
+    }
+    
+    if (aux == NULL)
+        printf("Produto nao encontrado.\n");
+    else
+        if (aux->info.comprado == false)
+            printf("O produto ja esta desmarcado.");
+        else{
+        aux->info.comprado = false;
+        printf("O produto %s foi desmarcado.\n", aux->info.nome);
+        }
+
+    return true;
 }
 
 int Marcar_produto(Lista **prim){
@@ -103,7 +142,7 @@ int Marcar_produto(Lista **prim){
     }
     
     if (aux == NULL)
-        printf("Valor nao encontrado.\n");
+        printf("Produto nao encontrado.\n");
     else
         aux->info.comprado = true;
         printf("O produto %s foi marcado como comprado.\n", aux->info.nome);
@@ -224,7 +263,9 @@ int menu(){
     printf("2 - Remover Produto\n");
     printf("3 - Exibir Produtos\n");
     printf("4 - Marcar Produto\n");
-    printf("5 - Total\n");
+    printf("5 - Desmarcar Produto\n");
+    printf("6 - Total\n");
+    printf("0 - Sair\n");
     printf("-----------------\n");
     printf("Escolha: ");
     scanf("%d", &op);
