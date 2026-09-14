@@ -11,7 +11,7 @@ O programa conta com um menu interativo que permite realizar as seguintes opera�
 4. **Marcar Produto:** Altera o status de um produto específico para "Comprado".
 5. **Total:** Exibe a quantidade total de produtos cadastrados na lista.
 
-## 🛠️ Tecnologias e Conceitos Utilizados
+## Tecnologias e Conceitos Utilizados
 
 - **Linguagem:** C
 - **Alocação Dinâmica de Memória:** `malloc` e `free`
